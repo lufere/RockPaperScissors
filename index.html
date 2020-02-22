@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Page Title</title>
+  <meta charset="UTF-8"/>
+</head>
+<body>
+  <script>
+    function computerPlay(){
+        let random = Math.floor(Math.random()*3);
+        switch(random){
+            case 0:
+                return "rock";
+                break;
+            case 1:
+                return "paper";
+                break;
+            case 2:
+                return "scissors";
+                break;
+        }
+    }
+    let result=computerPlay();
+    console.log(result);
+  </script>
+</body>
+</html>
