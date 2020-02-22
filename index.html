@@ -22,20 +22,46 @@
 
     function playRound(playerSelection, computerSelection){
         let player = playerSelection.toLowerCase();
-        if (player == computerSelection) return "It's a tie!";
-        if (player == "rock" && computerSelection == "paper") return "You lose! Paper beats Rock.";
-        if (player == "paper" && computerSelection == "rock") return "You win! Paper beats Rock.";
-        if (player == "paper" && computerSelection == "scissors") return "You lose! Scissors beats Paper.";
-        if (player == "scissors" && computerSelection == "paper") return "You win! Scissors beats Paper.";
-        if (player == "scissors" && computerSelection == "rock") return "You lose! Rock beats Scissors";
-        if (player == "rock" && computerSelection == "scissors") return "You win! Rock beats Scissors";
+        if (player == computerSelection) return "tie";
+        if (player == "rock" && computerSelection == "paper") return "lose";
+        if (player == "paper" && computerSelection == "rock") return "win";
+        if (player == "paper" && computerSelection == "scissors") return "lose";
+        if (player == "scissors" && computerSelection == "paper") return "win";
+        if (player == "scissors" && computerSelection == "rock") return "lose";
+        if (player == "rock" && computerSelection == "scissors") return "win";
     }
 
-    let playerSelection = "rock";
-    let computerSelection = computerPlay();
-    console.log("You chose:" + playerSelection);
-    console.log("The computer chose:" + computerSelection);
-    console.log(playRound(playerSelection,computerSelection));
+    function game(){
+        let win=0;
+        let tie=0;
+        let lose=0;
+        let playerSelection;
+        let computerSelection = computerPlay();
+        for (let i= 0; i<5; i++){
+            playerSelection = window.prompt("Rock, Paper, Scissors?");
+            computerSelection = computerPlay();
+            let result = playRound(playerSelection,computerSelection);
+            if (result == "win"){
+                console.log("You won");
+                win++;
+            }
+            if (result == "lose"){
+                console.log("You lost");
+                lose++;
+            }
+            if (result == "tie"){
+                console.log("You tied");
+                tie++;
+            }
+        }
+        if (win>lose) return ("You won!");
+        if (lose>win) return ("You lost :(");
+        if (lose==win) return ("It's a tie!");
+        return ("Results: " + win + " wins " + lose + " losses " + tie + " ties");
+    }
+
+    console.log(game());
+
   </script>
 </body>
 </html>
