@@ -4,6 +4,9 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
+    <button id="rock">ROCK</button>
+    <button id="paper">PAPER</button>
+    <button id="scissors">SCISSORS</button>
   <script>
     function computerPlay(){
         let random = Math.floor(Math.random()*3);
@@ -19,9 +22,10 @@
                 break;
         }
     }
-
+    let computerSelection;
     function playRound(playerSelection, computerSelection){
         let player = playerSelection.toLowerCase();
+        //computerSelection = computerPlay();
         if (player == computerSelection) return "tie";
         if (player == "rock" && computerSelection == "paper") return "lose";
         if (player == "paper" && computerSelection == "rock") return "win";
@@ -31,7 +35,7 @@
         if (player == "rock" && computerSelection == "scissors") return "win";
     }
 
-    function game(){
+  /*  function game(){
         let win=0;
         let tie=0;
         let lose=0;
@@ -58,10 +62,52 @@
         if (lose>win) return ("You lost :(");
         if (lose==win) return ("It's a tie!");
         return ("Results: " + win + " wins " + lose + " losses " + tie + " ties");
+    }*/
+
+    /*console.log(game());*/
+    const btnRock = document.querySelector("#rock");
+    const btnPaper = document.querySelector("#paper");
+    const btnScissors = document.querySelector("#scissors");
+    //let result="no";
+    let computer;
+    let playerWins=0;
+    let computerWins=0;
+
+    btnRock.addEventListener("click",function(){
+        computer = computerPlay();
+        let result = playRound("rock", computer);
+        if (result == "win") playerWins++;
+        if (result == "lose") computerWins++;
+        console.log(computer+" "+ result);
+        console.log("player: " + playerWins+" computer: "+computerWins );
+    })
+
+    btnPaper.addEventListener("click",function(){
+        computer = computerPlay();
+        let result = playRound("paper", computer);
+        if (result == "win") playerWins++;
+        if (result == "lose") computerWins++;
+        console.log(computer+" "+ result);
+        console.log("player: " + playerWins+" computer: "+computerWins );
+    })
+
+    btnScissors.addEventListener("click",function(){
+        computer = computerPlay();
+        let result = playRound("scissors", computer);
+        if (result == "win") playerWins++;
+        if (result == "lose") computerWins++;
+        console.log(computer+" "+ result);
+        console.log("player: " + playerWins+" computer: "+computerWins );
+    })
+    
+    /*btnRock.onclick = () => {
+        computer = computerPlay();
+        console.log(playRound("rock", computer));
     }
-
-    console.log(game());
-
+    btnPaper.onclick = () => {
+        computer = computerPlay();
+        console.log(playRound("paper", computer));
+    }*/
   </script>
 </body>
 </html>
