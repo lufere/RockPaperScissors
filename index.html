@@ -4,10 +4,13 @@
   <meta charset="UTF-8"/>
 </head>
 <body>
+    <div id="container"></div>
     <button id="rock">ROCK</button>
     <button id="paper">PAPER</button>
     <button id="scissors">SCISSORS</button>
   <script>
+
+    const container = document.querySelector('#container');
     function computerPlay(){
         let random = Math.floor(Math.random()*3);
         switch(random){
@@ -35,36 +38,6 @@
         if (player == "rock" && computerSelection == "scissors") return "win";
     }
 
-  /*  function game(){
-        let win=0;
-        let tie=0;
-        let lose=0;
-        let playerSelection;
-        let computerSelection = computerPlay();
-        for (let i= 0; i<5; i++){
-            playerSelection = window.prompt("Rock, Paper, Scissors?");
-            computerSelection = computerPlay();
-            let result = playRound(playerSelection,computerSelection);
-            if (result == "win"){
-                console.log("You won");
-                win++;
-            }
-            if (result == "lose"){
-                console.log("You lost");
-                lose++;
-            }
-            if (result == "tie"){
-                console.log("You tied");
-                tie++;
-            }
-        }
-        if (win>lose) return ("You won!");
-        if (lose>win) return ("You lost :(");
-        if (lose==win) return ("It's a tie!");
-        return ("Results: " + win + " wins " + lose + " losses " + tie + " ties");
-    }*/
-
-    /*console.log(game());*/
     const btnRock = document.querySelector("#rock");
     const btnPaper = document.querySelector("#paper");
     const btnScissors = document.querySelector("#scissors");
@@ -80,6 +53,7 @@
         if (result == "lose") computerWins++;
         console.log(computer+" "+ result);
         console.log("player: " + playerWins+" computer: "+computerWins );
+        countWins();
     })
 
     btnPaper.addEventListener("click",function(){
@@ -89,6 +63,7 @@
         if (result == "lose") computerWins++;
         console.log(computer+" "+ result);
         console.log("player: " + playerWins+" computer: "+computerWins );
+        countWins();
     })
 
     btnScissors.addEventListener("click",function(){
@@ -98,7 +73,18 @@
         if (result == "lose") computerWins++;
         console.log(computer+" "+ result);
         console.log("player: " + playerWins+" computer: "+computerWins );
+        countWins();
     })
+    const winCount = document.createElement("p");
+    container.appendChild(winCount);
+
+    const loseCount = document.createElement("p");
+    container.appendChild(loseCount);
+
+    function countWins(){ 
+        winCount.textContent=playerWins;
+        loseCount.textContent=computerWins;
+    }
     
     /*btnRock.onclick = () => {
         computer = computerPlay();
